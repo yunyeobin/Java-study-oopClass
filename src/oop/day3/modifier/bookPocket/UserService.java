@@ -1,17 +1,16 @@
 package oop.day3.modifier.bookPocket;
 
-class User {
-    private String name;
-    private String phone;
+class User extends Person{
+
+
 
     public User(String name, String phone) {
-        this.name = name;
-        this.phone = phone;
+        super(name, phone);
     }
 
     @Override
     public String toString() {
-        return "이름 : " + name + "\n" + "연락처 : " + phone;
+        return "이름 : " + getName() + "\n" + "연락처 : " + getPhone();
     }
 }
 
@@ -23,6 +22,6 @@ public class UserService {
     }
 
     void displayUser() {
-        System.out.println(user.toString());
+        System.out.println(user.toString());//Runner클래스에서 nameUser와 phoneNumber를 입력받았다
     }
 }

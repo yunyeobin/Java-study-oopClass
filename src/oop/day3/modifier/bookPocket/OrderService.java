@@ -12,15 +12,15 @@ public class OrderService {
             new Book("ISBN1234", "쉽게 배우는 JSP 웹 프로그래밍", 27000, "송미영", "단계별로 쇼핑몰을 구현하며 배우는 JSP 웹 프로그래밍", "IT전문서", "2018/10/08"),
             new Book("ISBN1235", "안드로이드 프로그래밍", 33000, "우재남", "실습 단계별 명쾌한 멘토링!", "IT전문서", "2022/01/22"),
             new Book("ISBN1236", "스크래치", 22000, "고광일", "컴퓨팅 사고력을 키우는 블록 코딩", "컴퓨터입문", "2019/06/10"),
-    };
+    };//도서타입 배열 books 선언.
 
-    private int[] cartAmount = new int[3];
+    private int[] cartAmount = new int[3]; //장바구니에 담긴 도서 수량값을 담는 배열 cartAmount. 책종류가 3권이라 index 3.
 
     public OrderService(Scanner sc) {
         this.sc = sc;
     }
 
-    public void resetCart() {
+    public void resetCart() { //모든 도서수량배열의 값을 0으로.
         for(int i = 0; i < cartAmount.length; i++) {
             cartAmount[i] = 0;
         }
@@ -28,14 +28,14 @@ public class OrderService {
 
     public void addCart() {
         System.out.print("장바구니에 추가할 도서의 ID를 입력하세요 :");
-        String bookId = sc.nextLine();
+        String bookId = sc.nextLine(); //bookId라는 문자열을 선언하고 도서ISBN을 할당.
         System.out.println("장바구니에 추가하겠습니까? Y | N");
         String flag = sc.nextLine();
         if(flag.equals("Y")) {
             for(int idxCart = 0; idxCart < cartAmount.length; idxCart++) {
-                Book el = books[idxCart];
-                if(el.getIsbn().equals(bookId)) {
-                    cartAmount[idxCart]++;
+                Book el = books[idxCart]; //
+                if(el.getIsbn().equals(bookId)) { //getIsbn은 ISBN 값을 리턴한다. books의 ISBN과, 입력된 bookId의 값이 같으면 실행
+                    cartAmount[idxCart]++; //도서수량에 증가++
                 }
             }
             System.out.printf("%s 도서가 장바구니에 추가되었습니다.", bookId);

@@ -2,10 +2,12 @@ package oop.day3.modifier.bookPocket;
 
 import java.util.Scanner;
 
-public class ShoppingMallService {
-    String[] menus = { "고객 정보 확인하기", "장바구니 상품 목록 보기", "장바구니 비우기", "바구니에 항목 추가하기", "장바구니의 항목 수량 줄이기", "장바구니의 항목 삭제하기", "영수증 표시하기", "종료" };
+public class ShoppingMallService { //메뉴 배열을 미리 만들어두었습니다.
+    String[] menus = { "고객 정보 확인하기", "장바구니 상품 목록 보기", "장바구니 비우기", "바구니에 항목 추가하기", "장바구니의 항목 수량 줄이기", "장바구니의 항목 삭제하기", "영수증 표시하기", "종료", "관리자 로그인" };
     private UserService userService;
     private OrderService orderService;
+
+    private Admin.AdminService adminService;
 
     private Scanner sc;
 
@@ -13,6 +15,8 @@ public class ShoppingMallService {
         this.sc = sc;
         this.userService = new UserService(nameUser, phoneUser);
         this.orderService = new OrderService(sc);
+        this.adminService = new Admin.AdminService(nameUser, phoneUser);
+
     }
 
     boolean displayMenu() {
@@ -29,7 +33,7 @@ public class ShoppingMallService {
 
         int lenMenus = menus.length;
         for(int idxMenu = 0; idxMenu < lenMenus; idxMenu++) {
-            System.out.printf("%d. %s", (idxMenu + 1), menus[idxMenu]);
+            System.out.printf("%d. %s", (idxMenu + 1), menus[idxMenu]); //메뉴배열의 각 값 앞에 0+1.이 출력. 메뉴번호.
             System.out.println();
         }
         System.out.println("*".repeat(54));
@@ -58,6 +62,9 @@ public class ShoppingMallService {
                 break;
             case 8:
                 return false;
+            case 9 :
+                adminService.displayAdmin();
+
             default:
         }
         return true;
